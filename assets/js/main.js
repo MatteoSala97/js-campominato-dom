@@ -12,6 +12,8 @@ function customShuffle(array) {
     return array
 }
 
+const gameOverHtml = document.getElementById("gameOver")
+
 function generateGrid() {
     gridHtml.innerHTML = ""
 
@@ -42,8 +44,6 @@ function generateGrid() {
         // checks if the current number is a bomb
         if (bombNumbers.includes(i)) {
             box.classList.add("bomb")
-        } else{
-
         }
 
         // this numerates the cells 
@@ -53,19 +53,36 @@ function generateGrid() {
         gridHtml.append(box)
 
         box.addEventListener("click", function() {
+
+            if (gridHtml.classList.contains("disabled")) {
+                return
+            }
+
             this.classList.toggle("active")
             console.log(i)
 
             // checks if clicked box is a bomb
-            if (box.classList.contains("bomb")) {
-                console.log("Game Over! You clicked a bomb.");
-                
+            if (bombNumbers.includes(i)) {
+                console.log("Game Over! You clicked a bomb.")
+                revealBombs()
+                gameOverHtml.classList.remove("you-lost-none")
+                gridHtml.classList.add("disabled")
             }
         })
     }
 }
 
+function revealBombs(){
+    const bombBoxes = document.querySelectorAll(".bomb")
+    bombBoxes.forEach((box)=>{
+        box.classList.add("revealed-bomb")
+    })
+}
+
+
 const radioButtons = document.querySelectorAll('input[name="difficulty"]');
+
+const scoreboardHtml = document.createElement("div")
 
 btnHtml.addEventListener("click", function() {
     for (const radioButton of radioButtons) {
@@ -74,30 +91,16 @@ btnHtml.addEventListener("click", function() {
             console.log(selectedDifficulty)
             generateGrid()
             gridHtml.classList.remove("none")
-            break;
+            break
         }
     }
 })
 
+const resetBtnHtml = document.getElementById("resetBtn");
 
-
-
-
-
-
-//dichiaro la variabile totalCells basata su divisor*divisor
-// scegliere 16 numeri randomizzati(no doppie scelte) con una costante
-//dichiaro const allNumbers
- 
-
-
-// generare in css la classe bomba (bg-color:red)
-// sconfitta quando clicco la classe bomba
-// al termine il sistema rivela il punteggio
-
-
-
-
-
-
+resetBtnHtml.addEventListener("click", function() {
+    gridHtml.classList.remove("disabled")
+    gameOverHtml.classList.add("you-lost-none")
+    generateGrid()
+})
 

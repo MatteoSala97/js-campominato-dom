@@ -28,14 +28,22 @@
                 <label for="Hard">Hard</label>
                 <input type="radio" id="Hard" name="difficulty" value="Hard">
             </div>
-            <button class="btn" id="btn">Toggle grid</button>
+            <div>
+                <button class="btn" id="btn">Toggle grid</button>
+            <button id="resetBtn" class="btn reset">
+                Reset
+            </button>
+            </div>
         </div>
     </header>
     <main>
         <div id="grid" class="none"> 
         </div>
     </main>
-
+    <div id="gameOver" class="revealed-bomb you-lost you-lost-none">
+        <h2>Game over! You clicked a bomb.</h2>
+        <p>Press the reset button and try again</p>
+    </div>
     <script src="./assets/js/main.js"></script>
 </body>
 </html>
