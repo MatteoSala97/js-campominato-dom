@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-campominato-dom</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class= "container">
+            <figure>
+                <img src="./assets/img/booleanicon.png" alt="">
+            </figure>
+            <h1>Campo Booleato</h1>
+        </div>
+        <div class="label-box">
+            <div class="label-container">
+                <label for="Easy">Easy</label>    
+                <input type="radio" id="Easy" name="difficulty" value="Easy">
+            </div>
+            <div class="label-container">
+                <label for="Medium">Medium</label>
+                <input type="radio" id="Medium" name="difficulty" value="Medium">
+            </div>
+            <div class="label-container">
+                <label for="Hard">Hard</label>
+                <input type="radio" id="Hard" name="difficulty" value="Hard">
+            </div>
+            <button class="btn" id="btn">Toggle grid</button>
+        </div>
+    </header>
+    <main>
+        <div id="grid" class="none"> 
+        </div>
+    </main>
+
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
